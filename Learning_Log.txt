@@ -1,0 +1,33 @@
+# Learning Log
+
+## Day 1 — Intro to Agents & Vibe Coding
+
+**Goal:** Learn Antigravity basics and build a real serverless pipeline on Google Cloud.
+
+**What I built:**
+A serverless, event-driven document processing pipeline: a file uploaded to
+Cloud Storage triggers Pub/Sub, which invokes a Cloud Run service (FastAPI)
+that analyzes the file and writes results to BigQuery. Also added a Streamlit
+dashboard to view and filter the results.
+
+**Key concepts learned:**
+- Agent = a model + tools/actions + feedback loop (not just raw text prediction)
+- Antigravity (Manager) vs Antigravity IDE: orchestrating agents vs editing code directly
+- Vibe coding (fast, intent-driven) vs agentic engineering (tests/evals first)
+- Serverless = no server management; event-driven = actions trigger automatically
+- How GCS, Pub/Sub, Cloud Run, and BigQuery connect into one pipeline
+- Application Default Credentials vs regular `gcloud auth login` (different auth purposes)
+
+**Bugs I hit and fixed myself:**
+1. BigQuery `tags` column was STRING, but code sent a Python list → insert failed.
+   Fixed by joining the list into a comma-separated string.
+2. PowerShell split `--set-env-vars KEY=A,KEY2=B` on the comma, corrupting the
+   BigQuery dataset name. Fixed by wrapping the value in quotes.
+
+**Tools used:** Google Antigravity (Gemini 3.1 Pro), gcloud CLI, BigQuery, Streamlit.
+
+**Result:** Working end-to-end pipeline, verified with real data in BigQuery,
+plus a working dashboard. See `dashboard/Dashboard_Screenshot.jpg`.
+
+**Questions / things to revisit:**
+- (add anything that's still unclear for you)
